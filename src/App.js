@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route,Routes,Link } from 'react-router-dom';
+import { Login } from './page/Login';
+import { ProductAll } from './page/ProductAll';
+import { ProductDetail } from './page/ProductDetail';
+import { Navbar } from './component/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <Routes>
+        <Route path='/' element={<ProductAll/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/product/:id' element={<ProductDetail/>}/>
+      </Routes>
     </div>
   );
 }
 
 export default App;
+//json-server --watch db.json --port 3004

@@ -12,5 +12,5 @@
 <img src ="public/Search.png"/>
 <h3>Mobile(Responsive Web)</h3>
 <img src ="public/Mobile.png"/>
-<br/><br/>
-<h4>FontAwesomeIcon, Bootstrap, React.js</h4>
+
+

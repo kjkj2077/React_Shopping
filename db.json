@@ -52,7 +52,7 @@
         },
         {
             "id":5,
-            "img":"https://lp2.hm.com/hmgoepprod?set=source[/95/20/9520af2b69e69ef18fbad1d2673d47b1afe2b107.jpg],origin[dam],category[],type[LOOKBOOK],res[z],hmver[1]&call=url[file:/product/main]",
+            "img":"https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fb6%2F60%2Fb6607c2ba6975322fa14f37fb263825924d4506e.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
             "title":"자카드 셔츠 드레스",
             "price":39900,
             "choice":false,

@@ -1,37 +1,63 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faSearch } from '@fortawesome/free-solid-svg-icons'
-export const Navbar = () => {
-    const menuList = ['여성', 'Divided', '남성'
-        , '신생아/유아', '아동', 'H&M Home', 'Sale', '지속가능성'];
+
+export const Navbar = ({ setAuth, auth }) => {
+    const menuList = ['Woman', 'Man', 'Infant', 'Child', 'Sale'];
+    const [searchValue, setSearchValue] = useState('');
+    const navigate = useNavigate()
+    const gotToLogin = () => {
+        navigate('/login')
+    }
+    const goToHome = () => {
+        navigate('/')
+    }
+    const search = (e) => {
+        if (e.key == "Enter") {
+            let keyword = e.target.value
+            console.log(keyword)
+            navigate(`/?q=${keyword}`)
+        }
+    }
+    const clickSearch = (searchValue) => {
+        navigate(`/?q=${searchValue}`)
+    }
     return (
         <div>
-            <div>
-                <div className='login-button'>
-                    <FontAwesomeIcon icon={faUser} />
-                    <div><Link to ='/login'> 로그인 </Link></div>
+            <div>{auth ? ( //true면 
+                <div>
+                    <div className='login-button' onClick={() => setAuth(false)}>
+                        <FontAwesomeIcon icon={faUser} className='login-icon' />
+                        <div>Logout</div>
+                    </div>
                 </div>
+
+            ) : ( //false면
+                <div>
+                    <div className='login-button' onClick={gotToLogin}>
+                        <FontAwesomeIcon icon={faUser} className='login-icon' />
+                        <div>Login</div>
+                    </div>
+                </div>
+            )}
             </div>
 
-            <div className='nav-section'>
+            <div className='nav-section' onClick={goToHome}>
                 <img width={100}
                     src='https://www2.hm.com/hm-logo.png'
                 />
             </div>
-
-            <div className='menu-area'>
+   
+            <div ßclassName='menu-area'>
                 <ul className='menu-list'>
                     {menuList.map(menu => <li>{menu}</li>)}
-                    <div className='search-box'> 
-                        <FontAwesomeIcon icon={faSearch} />
-                        <input type='text' />
+                    <span class="tooltiptext">not made yet</span>
+                    <div className='search-box'>
+                        <FontAwesomeIcon icon={faSearch} className='search-icon' onClick={() => clickSearch(searchValue)} />
+                        <input type='text' value={searchValue} onChange={(e) => setSearchValue(e.target.value)} onKeyPress={(e) => search(e)} />
                     </div>
-                </ul>  
-                {/* <div className='menu-search'>
-                    <FontAwesomeIcon icon={faSearch} />
-                    <input type='text' />
-                </div> */}
+                </ul>
             </div>
         </div>
     )

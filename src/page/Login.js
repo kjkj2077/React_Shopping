@@ -1,13 +1,27 @@
 import React from 'react'
-import { Button} from 'react-bootstrap';
-export const Login = () => {
+import { Button, Container, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+export const Login = ({setAuth}) => {
+  const navigate=useNavigate();
+  const loginUser = (e) => {
+    e.preventDefault(); //form쓰면 이걸 꼭사용 -> 리프레쉬 안됨.
+    setAuth(true)
+    navigate('/');
+  }
   return (
-    <div>
-      <form>
-      <p className='id'><input type='text' className='i-id' placeholder='이메일' id='username'  /></p>
-      <p className='pw'><input type='password' className='i-pw' placeholder='PASSWORD' id='password'  /></p>
-      <p className='button'><Button variant="outline-secondary" id="loginbtn" >로그인</Button></p>
-      </form>
-    </div>
+    <Container>
+      <Form onSubmit={(e) => loginUser(e)}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" placeholder="Enter email" />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Password" />
+        </Form.Group>
+        <Button variant="danger" type="submit">Login</Button>
+      </Form>
+    </Container>
   )
 }
